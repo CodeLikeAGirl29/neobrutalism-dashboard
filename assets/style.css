@@ -118,6 +118,57 @@
   --clr-light: #ffffff;
 }
 
+/* THEME: Space Grey */
+:root[data-theme="space-grey"] {
+  --clr-body-bg: #1d1d20;
+  --clr-card-bg: #3a3c45;
+  --clr-input-bg: #1d1d20;
+  --clr-btn-bg: #4e4e5f;
+
+  /* Accent mapping out of your structural grey tones */
+  --clr-purple: #7d7c92;
+  --clr-teal: #9fa5b2;
+  --clr-yellow: #4e4e5f;
+  --clr-crimson: #3a3c45;
+
+  --clr-dark: #000000;
+  --clr-light: #9fa5b2;
+}
+
+/* THEME: Tropical Serenity */
+:root[data-theme="tropical-serenity"] {
+  --clr-body-bg: #1d5e63;
+  --clr-card-bg: #1f7375;
+  --clr-input-bg: #1d5e63;
+  --clr-btn-bg: #2b8c8b;
+
+  /* Accent mapping out of your tropical cyan tones */
+  --clr-purple: #37a99c;
+  --clr-teal: #49b6aa;
+  --clr-yellow: #2b8c8b;
+  --clr-crimson: #1f7375;
+
+  --clr-dark: #000000;
+  --clr-light: #f3f4f6;
+}
+
+/* THEME: Titanium Tide */
+:root[data-theme="titanium-tide"] {
+  --clr-body-bg: #0d4a8c;
+  --clr-card-bg: #4a8bba;
+  --clr-input-bg: #0d4a8c;
+  --clr-btn-bg: #7e7f81;
+
+  /* Accent mapping out of your high-fidelity steel tones */
+  --clr-purple: #a1c6d4;
+  --clr-teal: #e3e0e5;
+  --clr-yellow: #4a8bba;
+  --clr-crimson: #7e7f81;
+
+  --clr-dark: #000000;
+  --clr-light: #e3e0e5;
+}
+
 /* --- 1B. GLOBAL TOKENS --- */
 :root {
   --stroke: 4px solid var(--clr-dark);

@@ -21,6 +21,9 @@ const themeItemsContainer = document.getElementById('theme-items-container');
 
 const themesList = [
   { key: 'cyber-dark', label: 'Cyber Dark' },
+  { key: 'space-grey', label: 'Space Grey' },
+  { key: 'tropical-serenity', label: 'Tropical Serenity' },
+  { key: 'titanium-tide', label: 'Titanium Tide' },
   { key: 'neo-classic', label: 'Neo Classic' },
   { key: 'matrix-glitch', label: 'Matrix Glitch' },
   { key: 'toxic-sunset', label: 'Toxic Sunset' },
