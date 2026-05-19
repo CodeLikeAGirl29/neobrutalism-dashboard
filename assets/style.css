@@ -1,0 +1,814 @@
+/* ==========================================================================
+   lindseyk.dev - Neobrutalism Persistent Theme Engine
+   ========================================================================== */
+
+/* --- 1A. THEME PALETTE DICTIONARY --- */
+
+/* DEFAULT Theme: Cyber Dark */
+:root,
+:root[data-theme="cyber-dark"] {
+  --clr-body-bg: #121318;
+  --clr-card-bg: #1E1F26;
+  --clr-input-bg: #16171D;
+  --clr-btn-bg: #2D2F39;
+
+  --clr-purple: #7C3AED;
+  --clr-yellow: #D97706;
+  --clr-teal: #0D9488;
+  --clr-crimson: #991B1B;
+
+  --clr-dark: #000000;
+  --clr-light: #F3F4F6;
+}
+
+/* THEME: Classic Bright Brutalism */
+:root[data-theme="neo-classic"] {
+  --clr-body-bg: #F0F0F0;
+  --clr-card-bg: #FFFFFF;
+  --clr-input-bg: #FFFFFF;
+  --clr-btn-bg: #FFFFFF;
+
+  --clr-purple: #C084FC;
+  --clr-yellow: #FFDE4D;
+  --clr-teal: #22D3EE;
+  --clr-crimson: #EF4444;
+
+  --clr-dark: #000000;
+  --clr-light: #000000;
+}
+
+/* THEME: Matrix Terminal */
+:root[data-theme="matrix-glitch"] {
+  --clr-body-bg: #0A0F0D;
+  --clr-card-bg: #141C18;
+  --clr-input-bg: #0D1411;
+  --clr-btn-bg: #1F2E27;
+
+  --clr-purple: #00FF66;
+  --clr-yellow: #33FF33;
+  --clr-teal: #009933;
+  --clr-crimson: #333333;
+
+  --clr-dark: #000000;
+  --clr-light: #00FF66;
+}
+
+/* THEME: Toxic Sunset */
+:root[data-theme="toxic-sunset"] {
+  --clr-body-bg: #2E1065;
+  --clr-card-bg: #4C1D95;
+  --clr-input-bg: #1E1B4B;
+  --clr-btn-bg: #6D28D9;
+
+  --clr-purple: #F43F5E;
+  --clr-yellow: #F59E0B;
+  --clr-teal: #10B981;
+  --clr-crimson: #B91C1C;
+
+  --clr-dark: #000000;
+  --clr-light: #FDE047;
+}
+
+/* THEME: Classic Sunset */
+:root[data-theme="classic-sunset"] {
+  --clr-body-bg: #1f0343;
+  --clr-card-bg: #86032f;
+  --clr-input-bg: #1f0343;
+  --clr-btn-bg: #c40321;
+
+  --clr-purple: #ff6700;
+  --clr-yellow: #f32f04;
+  --clr-teal: #ff6700;
+  --clr-crimson: #1f0343;
+
+  --clr-dark: #000000;
+  --clr-light: #ffffff;
+}
+
+/* THEME: More Than Important */
+:root[data-theme="more-than-important"] {
+  --clr-body-bg: #3c4d63;
+  --clr-card-bg: #ddd7c0;
+  --clr-input-bg: #ffffff;
+  --clr-btn-bg: #6e9c9c;
+
+  --clr-purple: #806150;
+  --clr-yellow: #6e9c9c;
+  --clr-teal: #806150;
+  --clr-crimson: #3c4d63;
+
+  --clr-dark: #000000;
+  --clr-light: #000000;
+  --clr-btn-text: #ffffff;
+}
+
+/* THEME: Graphite */
+:root[data-theme="graphite"] {
+  --clr-body-bg: #1e1c1e;
+  --clr-card-bg: #373537;
+  --clr-input-bg: #1e1c1e;
+  --clr-btn-bg: #4e4c4e;
+
+  --clr-purple: #c6c5c3;
+  --clr-yellow: #6a6965;
+  --clr-teal: #c6c5c3;
+  --clr-crimson: #1e1c1e;
+
+  --clr-dark: #000000;
+  --clr-light: #ffffff;
+}
+
+/* --- 1B. GLOBAL TOKENS --- */
+:root {
+  --stroke: 4px solid var(--clr-dark);
+  --shadow: 6px 6px 0px var(--clr-dark);
+  --shadow-btn: 4px 4px 0px var(--clr-dark);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--clr-body-bg);
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--clr-light);
+  padding: 30px 15px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* --- 2. HEADER STRUCT --- */
+header.main-header {
+  background-color: var(--clr-card-bg);
+  padding: 20px;
+  border: var(--stroke);
+  box-shadow: var(--shadow);
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: var(--clr-light);
+  position: relative;
+  z-index: 100;
+  /* Keeps overlays on top of dashboards */
+}
+
+@media (min-width: 750px) {
+  header.main-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.header-left h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.clock-display {
+  font-weight: 700;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* --- 3. ANIMATING DRAW-IN MENU POPUP PANELS --- */
+.theme-control-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.theme-label {
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.theme-trigger-box {
+  position: relative;
+  display: inline-block;
+}
+
+/* Triggers Custom Vector Layout Box */
+.neo-animate-btn {
+  background-color: var(--clr-purple);
+  color: #000000 !important;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  padding: 10px 40px 10px 20px;
+  border: var(--stroke);
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+.neo-animate-btn:after {
+  content: ' ';
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-25%);
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #000000;
+  transition: transform 300ms ease;
+}
+
+/* Rotates indicator arrow if active */
+.expanded .neo-animate-btn:after {
+  transform: translateY(-75%) rotate(180deg);
+}
+
+.menu-popup {
+  height: 235px;
+  width: 275px;
+  position: absolute;
+  top: 55px;
+  right: 0;
+  pointer-events: none;
+  /* Prevents clicks while invisible */
+}
+
+.expanded .menu-popup {
+  pointer-events: auto;
+}
+
+.container-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* Dynamic Line Rendering Hooks mapped to CSS Palette Rules */
+.border1,
+.border2 {
+  fill: var(--clr-card-bg);
+  fill-opacity: 0;
+  stroke: var(--clr-light);
+  stroke-dasharray: 0 520;
+  stroke-dashoffset: 0;
+  transition: stroke 400ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dasharray 400ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 400ms cubic-bezier(0.4, 0, 0.2, 1),
+    fill-opacity 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.border1 {
+  stroke-dasharray: 520 520;
+  stroke-dashoffset: -520px;
+}
+
+.menu-shadow {
+  position: absolute;
+  left: -50px;
+  top: -46px;
+  opacity: 0;
+  z-index: 1;
+  transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.contents {
+  position: absolute;
+  left: 20px;
+  top: 32px;
+  width: 234px;
+  height: 185px;
+  overflow-y: auto;
+  opacity: 0;
+  z-index: 3;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  padding-right: 4px;
+}
+
+/* Custom Inset Scrollbars */
+.contents::-webkit-scrollbar {
+  width: 6px;
+}
+
+.contents::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.contents::-webkit-scrollbar-thumb {
+  background: var(--clr-dark);
+  border: 1px solid var(--clr-light);
+}
+
+.row {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--clr-light);
+  align-items: center;
+  border-bottom: 2px solid var(--clr-dark);
+  cursor: pointer;
+  display: flex;
+  height: 42px;
+  padding: 0 8px;
+  user-select: none;
+  transition: background 0.15s ease;
+}
+
+.row:hover {
+  background: var(--clr-btn-bg);
+  color: var(--clr-purple);
+}
+
+/* --- STATE ANIMATION EXPANSION LOOPS --- */
+.expanded .border1,
+.expanded .border2 {
+  fill-opacity: 1;
+  stroke-dasharray: 520 520;
+  stroke-dashoffset: 0;
+}
+
+.expanded .menu-shadow {
+  opacity: 1;
+}
+
+.expanded .contents {
+  opacity: 1;
+  transition: opacity 400ms 100ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- 4. RESPONSIVE GRID GRID --- */
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+
+@media (min-width: 900px) {
+  .grid-layout {
+    grid-template-columns: 4fr 5fr;
+  }
+
+  .full-width-widget {
+    grid-column: span 2;
+  }
+}
+
+/* --- 5. WINDOW LAYOUT PANELS --- */
+.window-card {
+  background-color: var(--clr-card-bg);
+  border: var(--stroke);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.window-bar {
+  background-color: var(--clr-dark);
+  color: #FFFFFF;
+  padding: 8px 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  border-bottom: var(--stroke);
+}
+
+.window-body {
+  padding: 25px;
+  flex-grow: 1;
+}
+
+/* --- 6. TACTILE SELECTION & BUTTONS --- */
+.neo-btn {
+  padding: 10px 18px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: var(--stroke);
+  box-shadow: var(--shadow-btn);
+  cursor: pointer;
+  background-color: var(--clr-btn-bg);
+  color: var(--clr-btn-text, var(--clr-light));
+  transition: all 0.08s ease;
+}
+
+.neo-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--clr-dark);
+}
+
+.neo-btn:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0px 0px 0px var(--clr-dark);
+}
+
+.neo-btn.orange {
+  background-color: var(--clr-yellow);
+  color: #000000 !important;
+}
+
+.neo-btn.active-pause {
+  background-color: #EAB308;
+  color: #000000 !important;
+}
+
+.neo-btn.cyan {
+  background-color: var(--clr-teal);
+  color: #000000 !important;
+}
+
+.neo-btn.purple {
+  background-color: var(--clr-purple);
+  color: #000000 !important;
+}
+
+/* Inset inputs */
+.neo-input,
+.neo-textarea {
+  width: 100%;
+  padding: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  border: var(--stroke);
+  outline: none;
+  background-color: var(--clr-input-bg);
+  color: var(--clr-light);
+}
+
+.neo-input:focus,
+.neo-textarea:focus {
+  border-color: var(--clr-purple);
+}
+
+/* --- 7. COMPONENT BLOCK INJECTIONS --- */
+.pomo-display {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 4.5rem;
+  text-align: center;
+  background-color: var(--clr-purple);
+  color: #000000;
+  border: var(--stroke);
+  padding: 20px 0;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.button-group {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.quest-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.quest-list {
+  list-style: none;
+}
+
+.quest-item {
+  background-color: var(--clr-btn-bg);
+  border: var(--stroke);
+  padding: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+}
+
+.quest-item.completed {
+  background-color: var(--clr-input-bg);
+  color: #6B7280;
+  opacity: 0.6;
+}
+
+.quest-item.completed .quest-text {
+  text-decoration: line-through;
+}
+
+.action-btn {
+  padding: 4px 10px;
+  font-size: 0.8rem;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border: 2px solid var(--clr-dark);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-right: 10px;
+  color: #000000;
+}
+
+.badge-yellow {
+  background-color: var(--clr-yellow);
+}
+
+.badge-teal {
+  background-color: var(--clr-teal);
+  margin-bottom: 15px;
+}
+
+/* --- 8. NEW CARD INTERFACE COMPONENT TOKENS --- */
+
+/* Deadline Tracker Display */
+.deadline-display {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  text-align: center;
+  background-color: var(--clr-input-bg);
+  color: var(--clr-light);
+  border: var(--stroke);
+  padding: 15px 0;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+/* Mood Button Matrix Alignment */
+.mood-matrix {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.mood-matrix .mood-btn {
+  font-size: 1.6rem;
+  padding: 8px 0;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mood-status-bar {
+  background-color: var(--clr-dark);
+  color: var(--clr-purple);
+  font-weight: 700;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 2px solid var(--clr-purple);
+}
+
+/* GitHub Terminal Log Window Output */
+.terminal-log-stream {
+  background-color: #000000;
+  color: #00FF66;
+  /* Retro green phosphor glow code terminal style */
+  font-family: monospace;
+  padding: 15px;
+  border: var(--stroke);
+  min-height: 110px;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  overflow-y: auto;
+}
+
+.terminal-row {
+  margin-bottom: 8px;
+  border-bottom: 1px solid #141c18;
+  padding-bottom: 4px;
+  word-break: break-all;
+}
+
+/* --- 9. SPOTIFY HARDWARE AUDIO DECK STYLING --- */
+
+.audio-deck-body {
+  padding: 15px !important;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Telemetry Text Rows */
+.deck-telemetry {
+  display: flex;
+  justify-content: space-between;
+  font-family: monospace;
+  font-size: 0.75rem;
+  background-color: #000000;
+  padding: 4px 8px;
+  border: 2px solid var(--clr-dark);
+  color: var(--clr-yellow);
+}
+
+.status-pill.flashing {
+  color: #00FF66;
+  animation: telemetryPulse 2s infinite ease-in-out;
+}
+
+/* Clean Neobrutalist Bezel wrapper for the Iframe */
+.spotify-wrapper {
+  border: var(--stroke);
+  background-color: #000000;
+  box-shadow: inset 4px 4px 0px rgba(0, 0, 0, 0.8);
+  padding: 4px;
+  line-height: 0;
+}
+
+.spotify-wrapper iframe {
+  border: none !important;
+}
+
+/* Simulated Audio VU Volume Meters */
+.deck-vumeter-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 6px 12px;
+  align-items: center;
+  background-color: var(--clr-input-bg);
+  border: var(--stroke);
+  padding: 8px 12px;
+  font-family: monospace;
+  font-size: 0.7rem;
+  color: var(--clr-light);
+}
+
+.vu-label {
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.vu-bar {
+  background-color: #141419;
+  height: 6px;
+  border: 1px solid var(--clr-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.vu-fill {
+  height: 100%;
+  border-right: 2px solid var(--clr-dark);
+}
+
+/* --- ANIMATION LOOPS --- */
+@keyframes telemetryPulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* Keyframes simulating real audio compression readings */
+@keyframes vuBounceOne {
+
+  0%,
+  100% {
+    width: 45%;
+  }
+
+  15% {
+    width: 85%;
+  }
+
+  30% {
+    width: 20%;
+  }
+
+  45% {
+    width: 95%;
+  }
+
+  60% {
+    width: 60%;
+  }
+
+  75% {
+    width: 35%;
+  }
+
+  90% {
+    width: 78%;
+  }
+}
+
+@keyframes vuBounceTwo {
+
+  0%,
+  100% {
+    width: 60%;
+  }
+
+  20% {
+    width: 30%;
+  }
+
+  40% {
+    width: 90%;
+  }
+
+  55% {
+    width: 15%;
+  }
+
+  70% {
+    width: 75%;
+  }
+
+  85% {
+    width: 40%;
+  }
+}
+
+.anim-vu-1 {
+  background: linear-gradient(90deg, var(--clr-teal) 40%, var(--clr-purple) 100%);
+  width: 75%;
+  /* Solid, high-fidelity resting signal value */
+  animation: none;
+  /* Disables all movement completely */
+}
+
+.anim-vu-2 {
+  background: linear-gradient(90deg, var(--clr-yellow) 40%, var(--clr-crimson) 100%);
+  width: 58%;
+  /* Slightly offset value for an organic hardware feel */
+  animation: none;
+  /* Disables all movement completely */
+}
+
+/* ==========================================================================
+   10. HARDWARE METRICS GRAPH SYSTEM STYLING (NEOBRUTALIST RE-THEME)
+   ========================================================================== */
+
+.chart-deck-body {
+  padding: 15px !important;
+}
+
+.metrics-chart-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Individual Metric row formatting */
+.chart-metric-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Typography alignment */
+.metric-label-group {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--clr-light);
+}
+
+.metric-name {
+  text-transform: uppercase;
+}
+
+/* Neobrutalist Bar Tracks - Thick Outlines and True Drop Shadows */
+.metric-bar-track {
+  background-color: var(--clr-input-bg);
+  border: var(--stroke);
+  height: 24px;
+  /* Slightly taller for a chunkier hardware look */
+  position: relative;
+  box-shadow: 4px 4px 0px var(--clr-dark);
+  /* Signature neobrutalist hard shadow */
+  overflow: hidden;
+}
+
+/* The Color Fill Layer with Retro Striped Overlay */
+.metric-bar-fill {
+  height: 100%;
+  border-right: var(--stroke);
+  /* Heavy border boundary line on the slider tip */
+  transition: width 1.2s cubic-bezier(0.1, 1, 0.1, 1);
+
+  /* Blends a 45-degree terminal hazard striping directly over your theme variables */
+  background-image: linear-gradient(45deg,
+      rgba(0, 0, 0, 0.12) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(0, 0, 0, 0.12) 50%,
+      rgba(0, 0, 0, 0.12) 75%,
+      transparent 75%,
+      transparent);
+  background-size: 16px 16px;
+}

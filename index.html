@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DEV_OS // Dark Brutalist Center</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Space+Grotesk:wght@500;700&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/style.css">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <header class="main-header">
+      <div class="header-left">
+        <h1>DEV_OS // V1.0</h1>
+        <div class="clock-display" id="live-clock">00:00:00 PM</div>
+      </div>
+
+      <div class="theme-control-wrapper">
+        <span class="theme-label">SYS_THEME:</span>
+
+        <div class="theme-trigger-box">
+          <div class="neo-animate-btn" id="theme-menu-btn">
+            <div class="places" id="active-theme-display">Cyber Dark</div>
+          </div>
+
+          <div class="menu-popup" id="theme-menu-panel">
+            <svg class="menu-shadow" width="375" height="322" viewBox="0 0 375 322">
+              <defs>
+                <filter id="blur" x="-0.053" width="1.106" y="-0.068" height="1.138">
+                  <feGaussianBlur stdDeviation="6.075" />
+                </filter>
+              </defs>
+              <g transform="translate(0,120)">
+                <path style="opacity:0.25; fill:var(--clr-dark); filter:url(#blur)"
+                  d="M 187.5 59.5 L 176.5 70.5 L 61.1 70.5 C 55.2 70.5 50.5 75.2 50.5 81.1 L 50.5 260.8 C 50.5 266.7 55.2 271.5 61.1 271.5 L 187.5 271.5 L 313.8 271.5 C 319.7 271.5 324.5 266.7 324.5 260.8 L 324.5 81.1 C 324.5 75.2 319.7 70.5 313.8 70.5 L 198.5 70.5 L 187.5 59.5 z "
+                  transform="translate(0,-120)" />
+              </g>
+            </svg>
+
+            <svg class="container-svg" width="275" height="235" viewBox="0 0 275 235">
+              <g transform="translate(0,20)">
+                <path class="border1"
+                  d="m 137.5,214.5 h -126.39 c -5.87,0 -10.6,-4.73 -10.6,-10.6 v -192.78 c 0,-5.87 4.73,-10.6 10.6,-10.6 h 115.39 l 11,-11" />
+                <path class="border2"
+                  d="m 137.5,-10.5 11,11 h 115.39 c 5.87,0 10.6,4.73 10.6,10.6 v 192.78 c 0,5.87 -4.73,10.6 -10.6,10.6 h -126.39" />
+              </g>
+            </svg>
+
+            <div class="contents" id="theme-items-container">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </header>
+    <div class="grid-layout">
+
+      <section class="window-card">
+        <div class="window-bar">Focus_Engine.exe</div>
+        <div class="window-body">
+          <div class="pomo-display" id="timer-display">25:00</div>
+          <div class="button-group">
+            <button class="neo-btn orange" id="btn-start">Start</button>
+            <button class="neo-btn" id="btn-reset">Reset</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="window-card">
+        <div class="window-bar">Daily_Quests.sys</div>
+        <div class="window-body">
+          <div class="quest-input-row">
+            <input type="text" class="neo-input" id="new-quest" placeholder="Enter micro-quest description...">
+            <button class="neo-btn cyan" id="btn-add-quest">Add</button>
+          </div>
+          <ul class="quest-list" id="quest-container">
+            <li class="quest-item">
+              <div><span class="badge badge-yellow">Core</span>Refactor legacy stylesheets</div>
+              <button class="neo-btn action-btn"
+                onclick="this.parentElement.classList.toggle('completed')">Done</button>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="window-card">
+        <div class="window-bar">Deadline_Tracker.exe</div>
+        <div class="window-body">
+          <div class="deadline-display" id="countdown-display">00d : 00h : 00m : 00s</div>
+          <div class="quest-input-row">
+            <input type="datetime-local" class="neo-input" id="deadline-setter">
+            <button class="neo-btn purple" id="btn-set-deadline">Set</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="window-card">
+        <div class="window-bar">Core_Vibe.chk</div>
+        <div class="window-body">
+          <div class="mood-matrix">
+            <button class="neo-btn mood-btn" data-mood="overjoyed" title="Overjoyed">🤩</button>
+            <button class="neo-btn mood-btn" data-mood="happy" title="Happy">🙂</button>
+            <button class="neo-btn mood-btn" data-mood="neutral" title="Neutral">😐</button>
+            <button class="neo-btn mood-btn" data-mood="sad" title="Sad">😢</button>
+            <button class="neo-btn mood-btn" data-mood="angry" title="Angry">😡</button>
+          </div>
+          <div class="mood-status-bar" id="mood-status-text">SYSTEM_VIBE: UNSET</div>
+        </div>
+      </section>
+
+      <section class="window-card">
+        <div class="window-bar">Spotify_Node.sys</div>
+        <div class="window-body audio-deck-body">
+
+          <div class="deck-telemetry">
+            <span class="status-pill flashing">● BITRATE_OK</span>
+            <span class="deck-hz">44.1 kHz // 16-bit</span>
+          </div>
+
+          <div class="spotify-wrapper">
+            <iframe style="border-radius:0px; border: var(--stroke);"
+              src="https://open.spotify.com/embed/playlist/6WDyEJMsZhSJzaqcRdiGDd?utm_source=generator&theme=0"
+              width="100%" height="152"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="deck-vumeter-row">
+            <div class="vu-label">CH_L</div>
+            <div class="vu-bar">
+              <div class="vu-fill anim-vu-1"></div>
+            </div>
+            <div class="vu-label">CH_R</div>
+            <div class="vu-bar">
+              <div class="vu-fill anim-vu-2"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="window-card">
+        <div class="window-bar">Lang_Metrics.dat</div>
+        <div class="window-body chart-deck-body">
+
+          <div class="metrics-chart-container" id="languages-chart-v1">
+            LOADING SYSTEM METRICS...
+          </div>
+
+        </div>
+      </section>
+
+      <section class="window-card full-width-widget">
+        <div class="window-bar">Scratch_Vault.txt</div>
+        <div class="window-body">
+          <span class="badge badge-teal">Buffer Vault</span>
+          <textarea class="neo-textarea" rows="6" id="vault-input"
+            placeholder="Drop temporary code structures, tailwind classes, or API blocks here..."></textarea>
+          <button class="neo-btn purple" id="btn-save-vault" style="margin-top: 15px;">Cache Buffer</button>
+        </div>
+    </div>
+    </section>
+
+  </div>
+  </div>
+
+  <script src="./assets/script.js">
+  </script>
+</body>
+
+</html>
