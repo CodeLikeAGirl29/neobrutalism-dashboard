@@ -103,6 +103,56 @@
       </section>
 
       <section class="window-card">
+        <div class="window-bar">Palette_Overrider.sys</div>
+        <div class="window-body">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label
+                style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">ACCENT_PURPLE:</label>
+              <input type="color" id="picker-purple" value="#7C3AED"
+                style="border: var(--stroke); cursor: pointer; width: 45px; height: 35px; background: none;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label
+                style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">ACCENT_TEAL:</label>
+              <input type="color" id="picker-teal" value="#0D9488"
+                style="border: var(--stroke); cursor: pointer; width: 45px; height: 35px; background: none;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label
+                style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">CARD_BG:</label>
+              <input type="color" id="picker-card-bg" value="#1E1F26"
+                style="border: var(--stroke); cursor: pointer; width: 45px; height: 35px; background: none;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label
+                style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">INPUT_BG:</label>
+              <input type="color" id="picker-input-bg" value="#16171D"
+                style="border: var(--stroke); cursor: pointer; width: 45px; height: 35px; background: none;">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <label
+                style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 0.85rem; text-transform: uppercase;">SYSTEM_BG:</label>
+              <input type="color" id="picker-bg" value="#121318"
+                style="border: var(--stroke); cursor: pointer; width: 45px; height: 35px; background: none;">
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+              <button class="neo-btn purple action-btn" id="btn-save-custom" style="flex-grow: 1;">Save Look</button>
+              <button class="neo-btn action-btn" id="btn-reset-custom"
+                style="background-color: var(--clr-crimson); color: #fff;">Reset</button>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="window-card">
         <div class="window-bar">Core_Vibe.chk</div>
         <div class="window-body">
           <div class="mood-matrix">
@@ -147,7 +197,7 @@
         </div>
       </section>
 
-      <section class="window-card">
+      <section class="window-card full-width-widget">
         <div class="window-bar">Lang_Metrics.dat</div>
         <div class="window-body chart-deck-body">
 
@@ -159,19 +209,63 @@
       </section>
 
       <section class="window-card full-width-widget">
-        <div class="window-bar">Scratch_Vault.txt</div>
-        <div class="window-body">
-          <span class="badge badge-teal">Buffer Vault</span>
-          <textarea class="neo-textarea" rows="6" id="vault-input"
-            placeholder="Drop temporary code structures, tailwind classes, or API blocks here..."></textarea>
-          <button class="neo-btn purple" id="btn-save-vault" style="margin-top: 15px;">Cache Buffer</button>
+        <div class="window-bar">Scratch_Vault.txt // Live_Readme_Compiler.md</div>
+        <div class="window-body" style="display: grid; grid-template-columns: 1fr; gap: 20px; min-height: 400px;">
+
+          <div class="workspace-split" style="display: flex; flex-direction: column; gap: 20px;">
+
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+              <div
+                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+                <span class="badge badge-teal" style="margin-bottom: 0;">Buffer Input</span>
+                <div class="markdown-presets" style="display: flex; gap: 8px; flex-wrap: wrap;">
+                  <button class="neo-btn action-btn" id="pre-badges">🏷️ Badges</button>
+                  <button class="neo-btn action-btn" id="pre-install">⚡ Quick Start</button>
+                  <button class="neo-btn action-btn" id="pre-tech">🛠️ Tech Stack</button>
+                  <button class="neo-btn action-btn" id="pre-usage">💻 Usage</button>
+                  <button class="neo-btn action-btn" id="pre-features">✨ Features</button>
+                  <button class="neo-btn action-btn" id="pre-contrib">🤝 Contributing</button>
+                  <button class="neo-btn action-btn" id="pre-license">📄 License</button>
+                </div>
+              </div>
+              <textarea class="neo-textarea" id="vault-input" rows="12"
+                placeholder="Drop temporary code structures, markdown documentation blocks, or repository notes here..."
+                style="resize: vertical; height: 100%; min-height: 200px;"></textarea>
+            </div>
+
+            <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+              <span class="badge badge-yellow" style="width: fit-content;">Dynamic HTML Preview</span>
+              <div id="readme-preview"
+                style="background-color: var(--clr-input-bg); border: var(--stroke); padding: 20px; color: var(--clr-light); overflow-y: auto; height: 100%; min-height: 245px; font-family: 'Space Grotesk', sans-serif;">
+                <p style="opacity: 0.5; font-style: italic;">Your compiled markdown preview will render out raw
+                  structure
+                  lines here in real-time...</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="display: flex; gap: 12px; margin-top: 10px; flex-wrap: wrap;">
+            <button class="neo-btn purple" id="btn-save-vault">Cache Buffer</button>
+            <button class="neo-btn cyan" id="btn-copy-vault">Copy Raw Buffer</button>
+          </div>
+
         </div>
+      </section>
+
+      <section class="window-card full-width-widget" style="margin-top: 30px;">
+        <div class="window-bar">System_Console_Log.sh</div>
+        <div class="window-body">
+          <div class="terminal-log-stream" id="terminal-stream">
+            <div class="terminal-row">[INIT]: DEV_OS Core systems operational. Ready for deployment.</div>
+          </div>
+        </div>
+      </section>
+
     </div>
-    </section>
-
-  </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="./assets/script.js">
   </script>
 </body>

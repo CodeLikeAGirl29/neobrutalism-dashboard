@@ -135,21 +135,52 @@
   --clr-light: #9fa5b2;
 }
 
-/* THEME: Tropical Serenity */
-:root[data-theme="tropical-serenity"] {
-  --clr-body-bg: #1d5e63;
-  --clr-card-bg: #1f7375;
-  --clr-input-bg: #1d5e63;
-  --clr-btn-bg: #2b8c8b;
+/* THEME: Bubblegum Pop */
+:root[data-theme="bubblegum-pop"] {
+  --clr-body-bg: #FFE4E1;
+  --clr-card-bg: #FF69B4;
+  --clr-input-bg: #FFB6C1;
+  --clr-btn-bg: #00FFFF;
 
-  /* Accent mapping out of your tropical cyan tones */
-  --clr-purple: #37a99c;
-  --clr-teal: #49b6aa;
-  --clr-yellow: #2b8c8b;
-  --clr-crimson: #1f7375;
+  --clr-purple: #FF1493;
+  --clr-yellow: #FFFF00;
+  --clr-teal: #00FF00;
+  --clr-crimson: #FF0000;
 
   --clr-dark: #000000;
-  --clr-light: #f3f4f6;
+  --clr-light: #000000;
+}
+
+/* THEME: Deep Sea */
+:root[data-theme="deep-sea"] {
+  --clr-body-bg: #080D1A;
+  --clr-card-bg: #141E34;
+  --clr-input-bg: #0D1424;
+  --clr-btn-bg: #1D4ED8;
+
+  --clr-purple: #8B5CF6;
+  --clr-yellow: #F59E0B;
+  --clr-teal: #06B6D4;
+  --clr-crimson: #EF4444;
+
+  --clr-dark: #000000;
+  --clr-light: #F3F4F6;
+}
+
+/* THEME: Retro Arcade */
+:root[data-theme="retro-arcade"] {
+  --clr-body-bg: #11001C;
+  --clr-card-bg: #2B003B;
+  --clr-input-bg: #1C0028;
+  --clr-btn-bg: #4D0066;
+
+  --clr-purple: #FF00FF;
+  --clr-yellow: #FFFF00;
+  --clr-teal: #00FFFF;
+  --clr-crimson: #FF0055;
+
+  --clr-dark: #000000;
+  --clr-light: #E0E0E0;
 }
 
 /* THEME: Titanium Tide */
@@ -862,4 +893,134 @@ header.main-header {
       transparent 75%,
       transparent);
   background-size: 16px 16px;
+}
+
+/* Re-enable organic hardware audio channel movement */
+.anim-vu-1 {
+  background: linear-gradient(90deg, var(--clr-teal) 40%, var(--clr-purple) 100%);
+  animation: vuBounceOne 4.1s infinite ease-in-out;
+  /* Linked to keyframes down in style.css */
+}
+
+.anim-vu-2 {
+  background: linear-gradient(90deg, var(--clr-yellow) 40%, var(--clr-crimson) 100%);
+  animation: vuBounceTwo 5.2s infinite ease-in-out;
+  /* Linked to keyframes down in style.css */
+}
+
+@media (min-width: 900px) {
+  .workspace-split {
+    flex-direction: row !important;
+  }
+}
+
+/* --- 11. MARKED.JS NEOBRUTALIST RENDER STYLES --- */
+#readme-preview h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8rem;
+  margin: 0 0 20px 0;
+  background: var(--clr-purple);
+  color: #000000;
+  padding: 6px 14px;
+  display: inline-block;
+  border: var(--stroke);
+  box-shadow: var(--shadow-btn);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#readme-preview h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.5rem;
+  margin: 25px 0 12px 0;
+  border-bottom: var(--stroke);
+  padding-bottom: 6px;
+  color: var(--clr-light);
+  letter-spacing: 0.5px;
+}
+
+#readme-preview h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  margin: 20px 0 10px 0;
+  color: var(--clr-light);
+  letter-spacing: 0.5px;
+}
+
+#readme-preview p {
+  margin-bottom: 14px;
+  line-height: 1.6;
+  font-size: 0.95rem;
+  color: var(--clr-light);
+  opacity: 0.9;
+}
+
+/* Code Blocks */
+#readme-preview pre {
+  background-color: #000000;
+  color: #00FF66;
+  font-family: monospace;
+  padding: 15px;
+  border: var(--stroke);
+  box-shadow: 4px 4px 0px var(--clr-dark);
+  margin: 15px 0;
+  overflow-x: auto;
+  line-height: 1.5;
+}
+
+#readme-preview code {
+  background-color: var(--clr-btn-bg);
+  border: 1px solid var(--clr-purple);
+  padding: 2px 6px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  color: var(--clr-purple);
+  font-weight: 700;
+}
+
+#readme-preview pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+  font-weight: normal;
+}
+
+/* Lists & Structure */
+#readme-preview blockquote {
+  background-color: var(--clr-btn-bg);
+  border-left: 6px solid var(--clr-purple);
+  padding: 12px 16px;
+  margin: 15px 0;
+  font-style: italic;
+  color: var(--clr-light);
+  font-weight: 500;
+}
+
+#readme-preview ul,
+#readme-preview ol {
+  margin: 12px 0;
+  padding-left: 25px;
+}
+
+#readme-preview li {
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--clr-light);
+}
+
+#readme-preview hr {
+  border: none;
+  border-top: var(--stroke);
+  margin: 25px 0;
+}
+
+#readme-preview strong {
+  color: var(--clr-purple);
+  font-weight: 700;
+}
+
+#readme-preview em {
+  font-style: italic;
 }
